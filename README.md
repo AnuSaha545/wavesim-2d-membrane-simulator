@@ -27,11 +27,11 @@ The project combines numerical computation, scientific diagnostics, automated te
 
 The membrane vibration is governed by the two-dimensional damped wave equation:
 
-$$
+```math
 \frac{\partial^2 u}{\partial t^2}
 + 2\gamma\frac{\partial u}{\partial t}
 = c^2\nabla^2u
-$$
+```
 
 Where:
 
@@ -45,9 +45,9 @@ Where:
 
 The membrane occupies a circular region:
 
-$$
+```math
 x^2+y^2\leq R^2
-$$
+```
 
 Where $R$ is the membrane radius.
 
@@ -55,9 +55,9 @@ Where $R$ is the membrane radius.
 
 The membrane has fixed boundaries:
 
-$$
+```math
 u(x,y,t)=0
-$$
+```
 
 At the computational boundary.
 
@@ -65,11 +65,11 @@ At the computational boundary.
 
 The initial displacement is modelled using a Gaussian disturbance:
 
-$$
+```math
 u(x,y,0)=A\exp\left(
 -\frac{(x-x_0)^2+(y-y_0)^2}{2\sigma^2}
 \right)
-$$
+```
 
 Where:
 
@@ -79,9 +79,9 @@ Where:
 
 The initial velocity is zero:
 
-$$
+```math
 \frac{\partial u}{\partial t}(x,y,0)=0
-$$
+```
 
 ## Numerical Method
 
@@ -89,18 +89,18 @@ WaveSim uses a Cartesian computational grid and an explicit finite-difference sc
 
 The spatial Laplacian is approximated using the five-point stencil:
 
-$$
+```math
 \nabla_h^2u_{i,j}=
 \frac{u_{i+1,j}-2u_{i,j}+u_{i-1,j}}{\Delta x^2}
 +
 \frac{u_{i,j+1}-2u_{i,j}+u_{i,j-1}}{\Delta y^2}
-$$
+```
 
 The damped wave equation is discretized using finite differences in space and time.
 
 The resulting time-stepping recurrence is:
 
-$$
+```math
 u_{i,j}^{n+1}=
 \frac{
 2u_{i,j}^{n}
@@ -109,7 +109,7 @@ u_{i,j}^{n+1}=
 }{
 1+\gamma\Delta t
 }
-$$
+```
 
 The implementation uses the interior computational mask to update active points while maintaining zero displacement at fixed boundary points.
 
@@ -117,7 +117,7 @@ The implementation uses the interior computational mask to update active points 
 
 For the explicit two-dimensional wave scheme, the time step is selected to satisfy:
 
-$$
+```math
 c\Delta t
 \sqrt{
 \frac{1}{\Delta x^2}
@@ -125,7 +125,7 @@ c\Delta t
 \frac{1}{\Delta y^2}
 }
 \leq 1
-$$
+```
 
 A configurable safety factor is used to select a time step below the standard CFL limit.
 
@@ -401,70 +401,8 @@ These are potential extensions and are not claimed as implemented features.
 
 **Anu Saha**
 
-Electronics and Telecommunication Engineering
-
 GitHub: [AnuSaha545](https://github.com/AnuSaha545)
 
 ## License
-
-## Mathematical Model
-
-The membrane vibration is governed by the two-dimensional damped wave equation:
-
-```math
-\frac{\partial^2 u}{\partial t^2}
-+ 2\gamma\frac{\partial u}{\partial t}
-= c^2\nabla^2u
-```
-
-Where:
-
-- $u(x,y,t)$: Membrane displacement.
-- $c$: Wave propagation speed.
-- $\gamma$: Damping coefficient.
-- $t$: Time.
-- $\nabla^2$: Two-dimensional Laplacian operator.
-
-### Computational Domain
-
-The membrane occupies a circular region:
-
-```math
-x^2+y^2\leq R^2
-```
-
-Where $R$ is the membrane radius.
-
-### Boundary Condition
-
-The membrane has fixed boundaries:
-
-```math
-u(x,y,t)=0
-```
-
-At the computational boundary.
-
-### Initial Conditions
-
-The initial displacement is modelled using a Gaussian disturbance:
-
-```math
-u(x,y,0)=A\exp\left(
--\frac{(x-x_0)^2+(y-y_0)^2}{2\sigma^2}
-\right)
-```
-
-Where:
-
-- $A$: Initial disturbance amplitude.
-- $x_0,y_0$: Disturbance location.
-- $\sigma$: Gaussian spread.
-
-The initial velocity is zero:
-
-```math
-\frac{\partial u}{\partial t}(x,y,0)=0
-```
 
 A license has not yet been specified for this repository. Add an appropriate license before permitting reuse or redistribution of the project.
