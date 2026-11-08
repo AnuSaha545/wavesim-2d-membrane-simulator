@@ -402,7 +402,3 @@ These are potential extensions and are not claimed as implemented features.
 **Anu Saha**
 
 GitHub: [AnuSaha545](https://github.com/AnuSaha545)
-
-## License
-
-A license has not yet been specified for this repository. Add an appropriate license before permitting reuse or redistribution of the project.
